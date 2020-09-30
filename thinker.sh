@@ -15,7 +15,7 @@ fi
 #------------------------------------------------------------
 if [ -d "$TPDEV" ]; then
     	echo "Configuring Trackpoint"
-	python3 thinker.py $TPDEV
+	sudo python3 thinker.py $TPDEV
 else
     echo "Couldn't find trackpoint device $TPDEV"
 fi
