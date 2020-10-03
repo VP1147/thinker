@@ -14,8 +14,11 @@ fi
 # http://wwwcssrv.almaden.ibm.com/trackpoint/files/ykt3eext.pdf
 #------------------------------------------------------------
 if [ -d "$TPDEV" ]; then
-    	echo "Configuring Trackpoint"
-	sudo python3 thinker.py $TPDEV
+    	echo "Found device. For granting access to this script, your password"
+    	echo "may be prompted."
+    	sudo chmod 666 $TPDEV/speed
+    	sudo chmod 666 $TPDEV/sensitivity
+		python3 thinker.py $TPDEV
 else
     echo "Couldn't find trackpoint device $TPDEV"
 fi
