@@ -3,6 +3,13 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
+# Fetch values from the system
+def fetch(s1, s2):
+	with open(sys.argv[1]+"/sensitivity", "r") as sens:
+		s1 = sens.read()
+	with open(sys.argv[1]+"/speed", "r") as speed:
+		s2 = speed.read()
+
 # If button clicked
 def on_button_clicked(button):
 	with open(sys.argv[1]+"/sensitivity", "w") as sens:
