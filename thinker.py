@@ -4,11 +4,12 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
 # Fetch values from the system
-def fetch(s1, s2):
+def fetch():
 	with open(sys.argv[1]+"/sensitivity", "r") as sens:
-		s1 = sens.read()
+		s1 = int(sens.read())
 	with open(sys.argv[1]+"/speed", "r") as speed:
-		s2 = speed.read()
+		s2 = int(speed.read())
+	return s1, s2
 
 # If button clicked
 def on_button_clicked(button):
@@ -26,6 +27,9 @@ win = builder.get_object("win")
 box = builder.get_object("box")
 speed_scale = builder.get_object("speed_scale")
 sens_scale = builder.get_object("accel_scale")
+s1, s2 = fetch()
+sens_scale.set_value(s1)
+speed_scale.set_value(s2)
 button = builder.get_object("button")
 button.connect("clicked", lambda x: on_button_clicked(button))
 
