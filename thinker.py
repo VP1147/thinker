@@ -5,17 +5,17 @@ from gi.repository import Gtk
 
 # Fetch values from the system
 def fetch():
-	with open(sys.argv[1]+"/sensitivity", "r") as sens:
+	with open(sys.argv[1], "r") as sens:
 		s1 = int(sens.read())
-	with open(sys.argv[1]+"/speed", "r") as speed:
+	with open(sys.argv[2], "r") as speed:
 		s2 = int(speed.read())
 	return s1, s2
 
 # If button clicked
 def on_button_clicked(button):
-	with open(sys.argv[1]+"/sensitivity", "w") as sens:
+	with open(sys.argv[1], "w") as sens:
 		sens.write(str(int(sens_scale.get_value())))
-	with open(sys.argv[1]+"/speed", "w") as speed:
+	with open(sys.argv[2], "w") as speed:
 		speed.write(str(int(speed_scale.get_value())))
 
 # Start builder

@@ -1,24 +1,14 @@
 #! /bin/bash
 
-## Trackpoint settings
+SPEED=$(find /sys/devices/platform/ -name speed)
+SENS=$(find /sys/devices/platform/ -name sensitivity)
 
-# When run from a udev rule, DEVPATH should be set
-if [ ! -z $DEVPATH ] ; then
-    TPDEV=/sys/$( echo "$DEVPATH" | sed 's/\/input\/input[0-9]*//' )
-else
-# Otherwise just look in /sys/
-    TPDEV=$(find /sys/devices/platform/i8042 -name name | xargs grep -Fl TrackPoint | sed 's/\/input\/input[0-9]*\/name$//')
-fi
-
-# http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint
-# http://wwwcssrv.almaden.ibm.com/trackpoint/files/ykt3eext.pdf
-#------------------------------------------------------------
-if [ -d "$TPDEV" ]; then
+if [ -d "$SPEED" ]; then
     	echo "Found device. For granting access to this script, your password"
     	echo "may be prompted."
-    	sudo chmod 666 $TPDEV/speed
-    	sudo chmod 666 $TPDEV/sensitivity
-		python3 thinker.py $TPDEV
+    	sudo chmod 666 $SPEED
+    	sudo chmod 666 $SENS
+		python3 thinker.py $SPEED $SENS
 else
-    echo "Couldn't find trackpoint device $TPDEV"
+    echo "Couldn't find trackpoint device."
 fi
