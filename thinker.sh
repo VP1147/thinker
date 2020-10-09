@@ -3,7 +3,7 @@
 SPEED=$(find /sys/devices/platform/ -name speed)
 SENS=$(find /sys/devices/platform/ -name sensitivity)
 
-if [ -d "$SPEED" ]; then
+if [ "$SPEED" ]; then
     	echo "Found device. For granting access to this script, your password"
     	echo "may be prompted."
     	sudo chmod 666 $SPEED
