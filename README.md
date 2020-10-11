@@ -16,4 +16,4 @@ It will search for the device and request your permission to modify its properti
 ### As of my knowledge, it currently works on:
 Lenovo ThinkPad T410
 
-### If this code works fine on yout device, please create a issue with the `compatibility` label, so I can expand this list.
+### If this code works fine on your device, please create a issue with the `compatibility` label, so I can expand this list.
